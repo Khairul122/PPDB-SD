@@ -1,12 +1,10 @@
 <!-- Header -->
 <?php
-$title = "Data Orang Tua"; // Judulnya
-require("../template/header.php"); // include headernya
+$title = "Data Orang Tua"; // Page title
+require("../template/header.php"); // Include the header
 ?>
 
-
-
-<!-- Isinya -->
+<!-- Content Section -->
 
 <section class="section">
     <div class="section-header">
@@ -14,6 +12,7 @@ require("../template/header.php"); // include headernya
     </div>
 
     <?php
+    // Display alert messages if any
     if (isset($_SESSION['alert'])) {
         echo $_SESSION['alert'];
         unset($_SESSION['alert']);
@@ -25,7 +24,7 @@ require("../template/header.php"); // include headernya
             <div class="col-12">
                 <div class="card">
                     <div class="row mb-3 col-12 pt-2">
-                        <div class="col-md-4 ">
+                        <div class="col-md-4">
                             <label for="tanggal_awal">Tanggal Awal:</label>
                             <input type="date" class="form-control" id="tanggal_awal" name="tanggal_awal">
                         </div>
@@ -35,24 +34,21 @@ require("../template/header.php"); // include headernya
                         </div>
                         <div class="col-md-4">
                             <button class="btn btn-primary mt-4" onclick="filterData()">Filter</button>
-
                             <button class="btn btn-danger mt-4" onclick="resetFilter()">Reset Filter</button>
                         </div>
                     </div>
                     <div class="card-header">
-                        <!-- <h4>Basic DataTables</h4> -->
                         <a href="tambahData.php" type="button" class="btn btn-primary daterange-btn icon-left btn-icon">
                             <i class="fas fa-plus"></i> Tambah Data Orang Tua
                         </a>
+                        <a href="cetakData.php" class="btn btn-success" target="_blank">Cek PDF</a>
                     </div>
                     <div class="card-body">
-
-                        <!-- tabelnya -->
                         <div class="table-responsive">
                             <table class="table table-striped" id="table-1">
                                 <thead>
                                     <tr>
-                                        <th class="text-center"> No </th>
+                                        <th class="text-center">No</th>
                                         <th>NISN</th>
                                         <th>Nama Peserta</th>
                                         <th>Nama Ayah</th>
@@ -65,9 +61,9 @@ require("../template/header.php"); // include headernya
                                 <tbody>
                                     <?php
                                     include('../../config/connection.php');
-
                                     $no = 1;
-                                    $data = mysqli_query($conn, "SELECT NISN, Id_Orang_Tua_Wali, Nama_Peserta_Didik, Nama_Ayah, Nama_Ibu, Nama_Wali, a.tgl_ubah FROM orang_tua_wali a LEFT JOIN identitas_siswa b ON a.Id_Identitas_Siswa = b.Id_Identitas_Siswa") or die(mysqli_error($conn));
+                                    $query = "SELECT NISN, Id_Orang_Tua_Wali, Nama_Peserta_Didik, Nama_Ayah, Nama_Ibu, Nama_Wali, a.tgl_ubah FROM orang_tua_wali a LEFT JOIN identitas_siswa b ON a.Id_Identitas_Siswa = b.Id_Identitas_Siswa";
+                                    $data = mysqli_query($conn, $query) or die(mysqli_error($conn));
                                     foreach ($data as $row) {
                                     ?>
                                         <tr>
@@ -86,8 +82,6 @@ require("../template/header.php"); // include headernya
                                     <?php } ?>
                                 </tbody>
                             </table>
-                            <!-- penutup tabelnya -->
-
                         </div>
                     </div>
                 </div>
@@ -97,22 +91,14 @@ require("../template/header.php"); // include headernya
 </section>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#table-1').DataTable();
-    });
-</script>
-
-<script type="text/javascript">
-    // Fungsi untuk memfilter data berdasarkan tanggal
+    // Filter function for date range
     function filterData() {
-        var tanggalAwal = document.getElementById('tanggal_awal').value; // Menggunakan ID yang benar
-        var tanggalAkhir = document.getElementById('tanggal_akhir').value; // Menggunakan ID yang benar
+        var tanggalAwal = document.getElementById('tanggal_awal').value;
+        var tanggalAkhir = document.getElementById('tanggal_akhir').value;
 
-        // Loop melalui semua baris dalam tabel
         $('#table-1 tbody tr').each(function() {
-            var tanggalTabel = $(this).find('td:eq(6)').text(); // Ambil tanggal dari kolom ke-4
+            var tanggalTabel = $(this).find('td:eq(6)').text();
 
-            // Jika tanggal dalam rentang yang dipilih, tampilkan baris, jika tidak, sembunyikan
             if (tanggalAwal <= tanggalTabel && tanggalTabel <= tanggalAkhir) {
                 $(this).show();
             } else {
@@ -121,13 +107,10 @@ require("../template/header.php"); // include headernya
         });
     }
 
-    // Fungsi untuk mereset filter
+    // Reset function for date filter
     function resetFilter() {
-        // Bersihkan nilai input tanggal
-        document.getElementById('tanggal_awal').value = ''; // Menggunakan ID yang benar
-        document.getElementById('tanggal_akhir').value = ''; // Menggunakan ID yang benar
-
-        // Tampilkan kembali semua baris dalam tabel
+        document.getElementById('tanggal_awal').value = '';
+        document.getElementById('tanggal_akhir').value = '';
         $('#table-1 tbody tr').show();
     }
 
@@ -135,10 +118,6 @@ require("../template/header.php"); // include headernya
         $('#table-1').DataTable();
     });
 </script>
-
-<!-- Penutup Isinya -->
-
-
 
 <!-- Footer -->
 <?php require("../template/footer.php"); ?>

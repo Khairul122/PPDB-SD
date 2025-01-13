@@ -47,6 +47,7 @@ require("../template/header.php"); // include headernya
                             <a href="tambahData.php" type="button" class="btn btn-primary daterange-btn icon-left btn-icon">
                                 <i class="fas fa-plus"></i> Tambah Data Administrasi
                             </a>
+                            <a href="cetakData.php" class="btn btn-success" target="_blank">Cek PDF</a>
                         </div>
                         <div class="card-body">
 

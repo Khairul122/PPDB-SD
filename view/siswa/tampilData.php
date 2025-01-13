@@ -1,12 +1,7 @@
-<!-- Header -->
 <?php
-$title = "Data Siswa"; // Judulnya
-require("../template/header.php"); // include headernya
+$title = "Data Siswa";
+require("../template/header.php");
 ?>
-
-
-
-<!-- Isinya -->
 
 <section class="section">
     <div class="section-header">
@@ -24,35 +19,33 @@ require("../template/header.php"); // include headernya
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="row mb-3 col-12 pt-2">
-                        <div class="col-md-4 ">
-                            <label for="tanggal_awal">Tanggal Awal:</label>
-                            <input type="date" class="form-control" id="tanggal_awal" name="tanggal_awal">
-                        </div>
-                        <div class="col-md-4">
-                            <label for="tanggal_akhir">Tanggal Akhir:</label>
-                            <input type="date" class="form-control" id="tanggal_akhir" name="tanggal_akhir">
-                        </div>
-                        <div class="col-md-4">
-                            <button class="btn btn-primary mt-4" onclick="filterData()">Filter</button>
-
-                            <button class="btn btn-danger mt-4" onclick="resetFilter()">Reset Filter</button>
-                        </div>
-                    </div>
                     <div class="card-header">
-                        <!-- <h4>Basic DataTables</h4> -->
-                        <a href="tambahData.php" type="button" class="btn btn-primary daterange-btn icon-left btn-icon">
+                        <a href="tambahData.php" class="btn btn-primary">
                             <i class="fas fa-plus"></i> Tambah Data Siswa
                         </a>
+                        <a href="cetakData.php" class="btn btn-success" target="_blank">Cek PDF</a>
                     </div>
                     <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label for="tanggal_awal">Tanggal Awal:</label>
+                                <input type="date" class="form-control" id="tanggal_awal">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="tanggal_akhir">Tanggal Akhir:</label>
+                                <input type="date" class="form-control" id="tanggal_akhir">
+                            </div>
+                            <div class="col-md-4 d-grid gap-2">
+                                <button class="btn btn-primary mt-4" onclick="filterData()">Filter</button>
+                                <button class="btn btn-danger mt-4" onclick="resetFilter()">Reset Filter</button>
+                            </div>
+                        </div>
 
-                        <!-- tabelnya -->
                         <div class="table-responsive">
                             <table class="table table-striped" id="table-1">
                                 <thead>
                                     <tr>
-                                        <th class="text-center"> No </th>
+                                        <th class="text-center">No</th>
                                         <th>NISN</th>
                                         <th>Nama Lengkap</th>
                                         <th>Tanggal Lahir</th>
@@ -64,28 +57,27 @@ require("../template/header.php"); // include headernya
                                 <tbody>
                                     <?php
                                     include('../../config/connection.php');
-
+                                    $query = "SELECT Id_Identitas_Siswa, NISN, Nama_Peserta_Didik, Tanggal_Lahir, Alamat_Tinggal, tgl_ubah FROM identitas_siswa";
+                                    $data = mysqli_query($conn, $query) or die(mysqli_error($conn));
                                     $no = 1;
-                                    $data = mysqli_query($conn, "SELECT Id_Identitas_Siswa, NISN, Nama_Peserta_Didik, Tanggal_Lahir, Alamat_Tinggal, tgl_ubah FROM identitas_siswa") or die(mysqli_error($conn));
                                     foreach ($data as $row) {
-                                    ?>
-                                        <tr>
-                                            <td class="text-center"><?= $no++; ?></td>
-                                            <td><?= $row['NISN']; ?></td>
-                                            <td><?= $row['Nama_Peserta_Didik']; ?></td>
-                                            <td><?= $row['Tanggal_Lahir']; ?></td>
-                                            <td><?= $row['Alamat_Tinggal']; ?></td>
-                                            <td><?= $row['tgl_ubah']; ?></td>
-                                            <td class="text-center" width="120px">
-                                                <a href="ubahData.php?id=<?= $row['Id_Identitas_Siswa']; ?>" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
-                                                <a href="../../controller/admin/siswa.php?hapusData=<?= $row['Id_Identitas_Siswa']; ?>" class="btn btn-danger my-2" onclick="return confirm('Anda Yakin');"><i class="fas fa-trash"></i></a>
+                                        echo "<tr>
+                                            <td class='text-center'>$no</td>
+                                            <td>{$row['NISN']}</td>
+                                            <td>{$row['Nama_Peserta_Didik']}</td>
+                                            <td>{$row['Tanggal_Lahir']}</td>
+                                            <td>{$row['Alamat_Tinggal']}</td>
+                                            <td>{$row['tgl_ubah']}</td>
+                                            <td class='text-center'>
+                                                <a href='ubahData.php?id={$row['Id_Identitas_Siswa']}' class='btn btn-warning'><i class='fas fa-pencil-alt'></i></a>
+                                                <a href='../../controller/admin/siswa.php?hapusData={$row['Id_Identitas_Siswa']}' class='btn btn-danger my-2' onclick='return confirm(\"Anda Yakin\");'><i class='fas fa-trash'></i></a>
                                             </td>
-                                        </tr>
-                                    <?php } ?>
+                                        </tr>";
+                                        $no++;
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
-                            <!-- penutup tabelnya -->
-
                         </div>
                     </div>
                 </div>
@@ -94,50 +86,28 @@ require("../template/header.php"); // include headernya
     </div>
 </section>
 
-<script type="text/javascript">
+<script>
     $(document).ready(function() {
         $('#table-1').DataTable();
+
+        function filterData() {
+            var tanggalAwal = $('#tanggal_awal').val();
+            var tanggalAkhir = $('#tanggal_akhir').val();
+
+            $('#table-1 tbody tr').each(function() {
+                var tanggalTabel = $(this).find('td:eq(5)').text();
+                $(this).toggle(tanggalAwal <= tanggalTabel && tanggalTabel <= tanggalAkhir);
+            });
+        }
+
+        function resetFilter() {
+            $('#tanggal_awal, #tanggal_akhir').val('');
+            $('#table-1 tbody tr').show();
+        }
+
+        window.filterData = filterData;
+        window.resetFilter = resetFilter;
     });
 </script>
 
-<script type="text/javascript">
-    // Fungsi untuk memfilter data berdasarkan tanggal
-    function filterData() {
-        var tanggalAwal = document.getElementById('tanggal_awal').value; // Menggunakan ID yang benar
-        var tanggalAkhir = document.getElementById('tanggal_akhir').value; // Menggunakan ID yang benar
-
-        // Loop melalui semua baris dalam tabel
-        $('#table-1 tbody tr').each(function() {
-            var tanggalTabel = $(this).find('td:eq(5)').text(); // Ambil tanggal dari kolom ke-4
-
-            // Jika tanggal dalam rentang yang dipilih, tampilkan baris, jika tidak, sembunyikan
-            if (tanggalAwal <= tanggalTabel && tanggalTabel <= tanggalAkhir) {
-                $(this).show();
-            } else {
-                $(this).hide();
-            }
-        });
-    }
-
-    // Fungsi untuk mereset filter
-    function resetFilter() {
-        // Bersihkan nilai input tanggal
-        document.getElementById('tanggal_awal').value = ''; // Menggunakan ID yang benar
-        document.getElementById('tanggal_akhir').value = ''; // Menggunakan ID yang benar
-
-        // Tampilkan kembali semua baris dalam tabel
-        $('#table-1 tbody tr').show();
-    }
-
-    $(document).ready(function() {
-        $('#table-1').DataTable();
-    });
-</script>
-
-
-<!-- Penutup Isinya -->
-
-
-
-<!-- Footer -->
 <?php require("../template/footer.php"); ?>
