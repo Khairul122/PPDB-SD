@@ -67,7 +67,7 @@
         </header>
         <div class="ftco-blocks-cover-1">
             <!-- data-stellar-background-ratio="0.5" style="background-image: url('../../assets/style/images/hero_1.jpg')" -->
-            <div class="site-section-cover overlay" data-stellar-background-ratio="0.5" style="background-image: url('../../assets/style/images/hero_1.jpg')">
+            <div class="site-section-cover overlay" data-stellar-background-ratio="0.5" style="background-image: url('../../assets/style/images/bg.jpg')">
                 <div class="container">
                     <div class="row align-items-center ">
 
@@ -86,34 +86,34 @@
                 <div class="row mb-5">
                     <div class="col-12 text-center">
                         <span class="text-cursive h5 text-red d-block">Our Gallery</span>
-                        <h2 class="text-black">Gallery Of The Kids</h2>
+                        <h2 class="text-black">Gallery Of The School</h2>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-3 mb-4">
-                        <a href="../../assets/style/images/img_1.jpg" data-fancybox="gal"><img src="../../assets/style/images/img_1.jpg" alt="Image" class="img-fluid"></a>
+                        <a href="../../assets/style/images/gambar1.jpg" data-fancybox="gal"><img src="../../assets/style/images/gambar1.jpg" alt="Image" class="img-fluid"></a>
                     </div>
                     <div class="col-md-3 mb-4">
-                        <a href="../../assets/style/images/img_2.jpg" data-fancybox="gal"><img src="../../assets/style/images/img_2.jpg" alt="Image" class="img-fluid"></a>
+                        <a href="../../assets/style/images/gambar2.jpg" data-fancybox="gal"><img src="../../assets/style/images/gambar2.jpg" alt="Image" class="img-fluid"></a>
                     </div>
                     <div class="col-md-3 mb-4">
-                        <a href="../../assets/style/images/img_3.jpg" data-fancybox="gal"><img src="../../assets/style/images/img_3.jpg" alt="Image" class="img-fluid"></a>
+                        <a href="../../assets/style/images/gambar3.jpg" data-fancybox="gal"><img src="../../assets/style/images/gambar3.jpg" alt="Image" class="img-fluid"></a>
                     </div>
                     <div class="col-md-3 mb-4">
-                        <a href="../../assets/style/images/img_4.jpg" data-fancybox="gal"><img src="../../assets/style/images/img_4.jpg" alt="Image" class="img-fluid"></a>
+                        <a href="../../assets/style/images/gambar4.jpg" data-fancybox="gal"><img src="../../assets/style/images/gambar4.jpg" alt="Image" class="img-fluid"></a>
                     </div>
 
                     <div class="col-md-3 mb-4">
-                        <a href="../../assets/style/images/img_5.jpg" data-fancybox="gal"><img src="../../assets/style/images/img_5.jpg" alt="Image" class="img-fluid"></a>
+                        <a href="../../assets/style/images/gambar5.jpg" data-fancybox="gal"><img src="../../assets/style/images/gambar5.jpg" alt="Image" class="img-fluid"></a>
                     </div>
                     <div class="col-md-3 mb-4">
-                        <a href="../../assets/style/images/img_2.jpg" data-fancybox="gal"><img src="../../assets/style/images/img_3.jpg" alt="Image" class="img-fluid"></a>
+                        <a href="../../assets/style/images/gambar1.jpg" data-fancybox="gal"><img src="../../assets/style/images/gambar1.jpg" alt="Image" class="img-fluid"></a>
                     </div>
                     <div class="col-md-3 mb-4">
-                        <a href="../../assets/style/images/img_2.jpg" data-fancybox="gal"><img src="../../assets/style/images/img_2.jpg" alt="Image" class="img-fluid"></a>
+                        <a href="../../assets/style/images/gambar7.jpg" data-fancybox="gal"><img src="../../assets/style/images/gambar7.jpg" alt="Image" class="img-fluid"></a>
                     </div>
                     <div class="col-md-3 mb-4">
-                        <a href="../../assets/style/images/img_1.jpg" data-fancybox="gal"><img src="../../assets/style/images/img_1.jpg" alt="Image" class="img-fluid"></a>
+                        <a href="../../assets/style/images/gambar8.jpg" data-fancybox="gal"><img src="../../assets/style/images/gambar8.jpg" alt="Image" class="img-fluid"></a>
                     </div>
                 </div>
             </div>
