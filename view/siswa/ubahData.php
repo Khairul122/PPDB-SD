@@ -65,7 +65,7 @@ if (!isset($_GET['id'])) {
                                     </div>
                                     <div class="form-group">
                                         <label>No. KK</label>
-                                        <input type="text" class="form-control" name="no_kk" required="" minlength="16" value="<?= $row['No_KK']; ?>">
+                                        <input type="number" class="form-control" name="no_kk" required="" minlength="16" value="<?= $row['No_KK']; ?>">
                                         <!-- Validation -->
                                         <div class="valid-feedback"> Baguss! </div>
                                         <div class="invalid-feedback"> Minimal 16 kata</div>
@@ -73,7 +73,7 @@ if (!isset($_GET['id'])) {
                                     </div>
                                     <div class="form-group">
                                         <label>NIK</label>
-                                        <input type="text" class="form-control" name="nik" required="" minlength="16" value="<?= $row['NIK']; ?>">
+                                        <input type="number" class="form-control" name="nik" required="" minlength="16" value="<?= $row['NIK']; ?>">
                                         <!-- Validation -->
                                         <div class="valid-feedback"> Baguss! </div>
                                         <div class="invalid-feedback"> Minimal 16 kata </div>

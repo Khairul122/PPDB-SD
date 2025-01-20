@@ -39,7 +39,7 @@ require("../template/header.php"); // include headernya
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label for="nisn">NISN</label>
-                                    <input type="text" class="form-control" id="nisn" name="nisn" required maxlength="10">
+                                    <input type="number" class="form-control" id="nisn" name="nisn" required maxlength="10">
                                     <!-- Validation -->
                                     <div class="valid-feedback">Bagus!</div>
                                     <div class="invalid-feedback">Harus terdiri dari maksimal 10 digit.</div>
@@ -48,7 +48,7 @@ require("../template/header.php"); // include headernya
 
                                 <div class="form-group">
                                     <label>No. KK</label>
-                                    <input type="text" class="form-control" name="no_kk" required="" maxlength="16">
+                                    <input type="number" class="form-control" name="no_kk" required="" maxlength="16">
                                     <!-- Validation -->
                                     <div class="valid-feedback"> Baguss! </div>
                                     <div class="invalid-feedback"> Minimal 16 kata</div>
@@ -56,7 +56,7 @@ require("../template/header.php"); // include headernya
                                 </div>
                                 <div class="form-group">
                                     <label>NIK</label>
-                                    <input type="text" class="form-control" name="nik" required="" maxlength="16">
+                                    <input type="number" class="form-control" name="nik" required="" maxlength="16">
                                     <!-- Validation -->
                                     <div class="valid-feedback"> Baguss! </div>
                                     <div class="invalid-feedback"> Minimal 8 kata </div>

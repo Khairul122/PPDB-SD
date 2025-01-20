@@ -140,7 +140,7 @@ $title = "Pendaftaran Peserta Didik Baru"; // Judulnya
                                                 <div class="modal-body">
                                                     <div class="form-group">
                                                         <label>NISN</label>
-                                                        <input type="text" class="form-control" name="nisn" required="" minlength="10" maxlength="10">
+                                                        <input type="number" class="form-control" name="nisn" required="" minlength="10" maxlength="10">
                                                         <!-- Validation -->
                                                         <div class="valid-feedback"> Baguss! </div>
                                                         <div class="invalid-feedback"> Wajib 10 kata</div>
@@ -148,7 +148,7 @@ $title = "Pendaftaran Peserta Didik Baru"; // Judulnya
                                                     </div>
                                                     <div class="form-group">
                                                         <label>No. KK</label>
-                                                        <input type="text" class="form-control" name="no_kk" required="" minlength="16" maxlength="16">
+                                                        <input type="number" class="form-control" name="no_kk" required="" minlength="16" maxlength="16">
                                                         <!-- Validation -->
                                                         <div class="valid-feedback"> Baguss! </div>
                                                         <div class="invalid-feedback"> Wajib 16 kata</div>
@@ -156,7 +156,7 @@ $title = "Pendaftaran Peserta Didik Baru"; // Judulnya
                                                     </div>
                                                     <div class="form-group">
                                                         <label>NIK</label>
-                                                        <input type="text" class="form-control" name="nik" required="" minlength="16" maxlength="16">
+                                                        <input type="number" class="form-control" name="nik" required="" minlength="16" maxlength="16">
                                                         <!-- Validation -->
                                                         <div class="valid-feedback"> Baguss! </div>
                                                         <div class="invalid-feedback"> Wajib 8 kata </div>
