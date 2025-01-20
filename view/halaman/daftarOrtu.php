@@ -133,8 +133,7 @@
           <div class="card-body">
           	
           	<!-- Jika ada session daftar -->
-          	<?php if ($_SESSION['status_ortu'] == 0) { ?> 
-
+			  <?php if (isset($_SESSION['status_ortu']) && $_SESSION['status_ortu'] == 0) { ?>
           	<nav aria-label="breadcrumb">
               <ol class="breadcrumb bg-primary text-white-all">
                 <li class="breadcrumb-item active" aria-current="page">Tambah Data Orang Tua</li>

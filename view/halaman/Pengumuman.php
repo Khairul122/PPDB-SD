@@ -177,23 +177,28 @@ if (!isset($_SESSION['namaPeserta'])) {
 																</button>
 															</div>
 														</form>
-
 														<?php
 														if (isset($_POST['check'])) {
 															try {
 																$NISN = mysqli_real_escape_string($conn, $_POST['NISN']);
 
-																// Query debugging
-																$query = "SELECT * FROM identitas_siswa WHERE NISN = '$NISN'";
+																// Query untuk mendapatkan data siswa dan status administrasi
+																$query = "
+            SELECT 
+                identitas_siswa.NISN,
+                identitas_siswa.Nama_Peserta_Didik,
+                administrasi.status
+            FROM 
+                identitas_siswa
+            LEFT JOIN 
+                administrasi 
+            ON 
+                identitas_siswa.Id_Identitas_Siswa = administrasi.id_identitas_siswa
+            WHERE 
+                identitas_siswa.NISN = '$NISN'
+        ";
+
 																$result = mysqli_query($conn, $query);
-
-																// Debug informasi
-																echo "<!-- Debug Info:
-        Query: $query
-        Num Rows: " . mysqli_num_rows($result) . "
-        Error (if any): " . mysqli_error($conn) . "
-        -->";
-
 																if ($result && mysqli_num_rows($result) > 0) {
 																	$data = mysqli_fetch_assoc($result);
 														?>
@@ -214,12 +219,19 @@ if (!isset($_SESSION['namaPeserta'])) {
 																						<td><?= htmlspecialchars($data['Nama_Peserta_Didik']) ?></td>
 																						<td><?= htmlspecialchars($data['NISN']) ?></td>
 																						<td>
-																							<?php if ($data['status_administrasi'] == 1): ?>
-																								<span class="badge badge-success">LOLOS</span>
+																							<?php if (!empty($data['status'])): ?>
+																								<?php if (strtolower($data['status']) == 'lolos'): ?>
+																									<span class="badge badge-success" style="font-size: 14px; padding: 8px 12px; border-radius: 15px;">LOLOS</span>
+																								<?php elseif (strtolower($data['status']) == 'tidak lolos'): ?>
+																									<span class="badge badge-danger" style="font-size: 14px; padding: 8px 12px; border-radius: 15px;">TIDAK LOLOS</span>
+																								<?php else: ?>
+																									<span class="badge badge-secondary" style="font-size: 14px; padding: 8px 12px; border-radius: 15px;"><?= htmlspecialchars($data['status']) ?></span>
+																								<?php endif; ?>
 																							<?php else: ?>
-																								<span class="badge badge-danger">TIDAK LOLOS</span>
+																								<span class="badge badge-warning" style="font-size: 14px; padding: 8px 12px; border-radius: 15px;">BELUM VERIFIKASI</span>
 																							<?php endif; ?>
 																						</td>
+
 																					</tr>
 																				</tbody>
 																			</table>

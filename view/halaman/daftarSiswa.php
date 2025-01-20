@@ -67,6 +67,7 @@ $title = "Pendaftaran Peserta Didik Baru"; // Judulnya
                         </li>
                     </ul>
                 </nav>
+
                 <!-- SIDEBAR -->
                 <div class="main-sidebar">
                     <aside id="sidebar-wrapper">
@@ -140,15 +141,16 @@ $title = "Pendaftaran Peserta Didik Baru"; // Judulnya
                                                 <div class="modal-body">
                                                     <div class="form-group">
                                                         <label>NISN</label>
-                                                        <input type="number" class="form-control" name="nisn" required="" minlength="10" maxlength="10">
-                                                        <!-- Validation -->
-                                                        <div class="valid-feedback"> Baguss! </div>
-                                                        <div class="invalid-feedback"> Wajib 10 kata</div>
-                                                        <!-- End Validation -->
+                                                        <input type="number" class="form-control" name="nisn" required=""
+                                                            minlength="10" maxlength="10"
+                                                            value="<?= isset($_SESSION['form_data']['nisn']) ? $_SESSION['form_data']['nisn'] : ''; ?>">
+                                                        <div class="valid-feedback">Bagus!</div>
+                                                        <div class="invalid-feedback">Wajib 10 karakter.</div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>No. KK</label>
-                                                        <input type="number" class="form-control" name="no_kk" required="" minlength="16" maxlength="16">
+                                                        <input type="number" class="form-control" name="no_kk" required="" minlength="16" maxlength="16"
+                                                            value="<?= isset($_SESSION['form_data']['no_kk']) ? $_SESSION['form_data']['no_kk'] : ''; ?>">
                                                         <!-- Validation -->
                                                         <div class="valid-feedback"> Baguss! </div>
                                                         <div class="invalid-feedback"> Wajib 16 kata</div>
@@ -156,7 +158,8 @@ $title = "Pendaftaran Peserta Didik Baru"; // Judulnya
                                                     </div>
                                                     <div class="form-group">
                                                         <label>NIK</label>
-                                                        <input type="number" class="form-control" name="nik" required="" minlength="16" maxlength="16">
+                                                        <input type="number" class="form-control" name="nik" required="" minlength="16" maxlength="16"
+                                                            value="<?= isset($_SESSION['form_data']['nik']) ? $_SESSION['form_data']['nik'] : ''; ?>">
                                                         <!-- Validation -->
                                                         <div class="valid-feedback"> Baguss! </div>
                                                         <div class="invalid-feedback"> Wajib 8 kata </div>
@@ -164,7 +167,8 @@ $title = "Pendaftaran Peserta Didik Baru"; // Judulnya
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Nama Panggilan</label>
-                                                        <input type="text" class="form-control" name="nama_panggilan" required="">
+                                                        <input type="text" class="form-control" name="nama_panggilan" required=""
+                                                            value="<?= isset($_SESSION['form_data']['nama_panggilan']) ? $_SESSION['form_data']['nama_panggilan'] : ''; ?>">
                                                         <!-- Validation -->
                                                         <div class="valid-feedback"> Baguss! </div>
                                                         <div class="invalid-feedback"> Wajib Diisi! </div>
@@ -172,7 +176,8 @@ $title = "Pendaftaran Peserta Didik Baru"; // Judulnya
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Nama Lengkap Peserta Didik</label>
-                                                        <input type="text" class="form-control" name="nama_lengkap" required="">
+                                                        <input type="text" class="form-control" name="nama_lengkap" required=""
+                                                            value="<?= isset($_SESSION['form_data']['nama_lengkap']) ? $_SESSION['form_data']['nama_lengkap'] : ''; ?>">
                                                         <!-- Validation -->
                                                         <div class="valid-feedback"> Baguss! </div>
                                                         <div class="invalid-feedback"> Wajib Diisi! </div>
@@ -180,7 +185,8 @@ $title = "Pendaftaran Peserta Didik Baru"; // Judulnya
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Tempat Lahir</label>
-                                                        <input type="text" class="form-control" name="tempat_lahir" required="">
+                                                        <input type="text" class="form-control" name="tempat_lahir" required=""
+                                                            value="<?= isset($_SESSION['form_data']['tempat_lahir']) ? $_SESSION['form_data']['tempat_lahir'] : ''; ?>">
                                                         <!-- Validation -->
                                                         <div class="valid-feedback"> Baguss! </div>
                                                         <div class="invalid-feedback"> Wajib Diisi! </div>
@@ -188,7 +194,8 @@ $title = "Pendaftaran Peserta Didik Baru"; // Judulnya
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Tanggal Lahir</label>
-                                                        <input type="date" class="form-control" name="tanggal_lahir" required="">
+                                                        <input type="date" class="form-control" name="tanggal_lahir" required=""
+                                                            value="<?= isset($_SESSION['form_data']['tanggal_lahir']) ? $_SESSION['form_data']['tanggal_lahir'] : ''; ?>">
                                                         <!-- Validation -->
                                                         <div class="valid-feedback"> Baguss! </div>
                                                         <div class="invalid-feedback"> Wajib Diisi! </div>
@@ -196,7 +203,8 @@ $title = "Pendaftaran Peserta Didik Baru"; // Judulnya
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Jenis Kelamin</label>
-                                                        <select class="form-control" name="jenis_kelamin" required="">
+                                                        <select class="form-control" name="jenis_kelamin" required=""
+                                                            value="<?= isset($_SESSION['form_data']['jenis_kelamin']) ? $_SESSION['form_data']['jenis_kelamin'] : ''; ?>">
                                                             <option value=""> ~~~ PILIH JENIS KELAMIN ~~~ </option>
                                                             <option value="Laki-Laki">Laki-Laki</option>
                                                             <option value="Perempuan">Perempuan</option>
@@ -208,7 +216,8 @@ $title = "Pendaftaran Peserta Didik Baru"; // Judulnya
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Agama</label>
-                                                        <input type="text" class="form-control" name="agama" required="">
+                                                        <input type="text" class="form-control" name="agama" required=""
+                                                        value="<?= isset($_SESSION['form_data']['agama']) ? $_SESSION['form_data']['agama'] : ''; ?>">
                                                         <!-- Validation -->
                                                         <div class="valid-feedback"> Baguss! </div>
                                                         <div class="invalid-feedback"> Wajib Diisi! </div>
@@ -216,7 +225,8 @@ $title = "Pendaftaran Peserta Didik Baru"; // Judulnya
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Gol Darah</label>
-                                                        <input type="text" class="form-control" name="gol_darah" required="">
+                                                        <input type="text" class="form-control" name="gol_darah" required=""
+                                                        value="<?= isset($_SESSION['form_data']['gol_darah']) ? $_SESSION['form_data']['gol_darah'] : ''; ?>">
                                                         <!-- Validation -->
                                                         <div class="valid-feedback"> Baguss! </div>
                                                         <div class="invalid-feedback"> Wajib Diisi! </div>
@@ -224,7 +234,8 @@ $title = "Pendaftaran Peserta Didik Baru"; // Judulnya
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Tinggi Badan</label>
-                                                        <input type="number" class="form-control" name="tinggi_badan" required="">
+                                                        <input type="number" class="form-control" name="tinggi_badan" required=""
+                                                        value="<?= isset($_SESSION['form_data']['tinggi_badan']) ? $_SESSION['form_data']['tinggi_badan'] : ''; ?>">
                                                         <!-- Validation -->
                                                         <div class="valid-feedback"> Baguss! </div>
                                                         <div class="invalid-feedback"> Wajib Diisi! </div>
@@ -232,18 +243,17 @@ $title = "Pendaftaran Peserta Didik Baru"; // Judulnya
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Berat Badan</label>
-                                                        <input type="number" class="form-control" name="berat_badan" required="">
+                                                        <input type="number" class="form-control" name="berat_badan" required=""
+                                                        value="<?= isset($_SESSION['form_data']['berat_badan']) ? $_SESSION['form_data']['berat_badan'] : ''; ?>">
                                                         <!-- Validation -->
                                                         <div class="valid-feedback"> Baguss! </div>
                                                         <div class="invalid-feedback"> Wajib Diisi! </div>
                                                         <!-- End Validation -->
                                                     </div>
-
-
-
                                                     <div class="form-group">
                                                         <label>Status Anak</label>
-                                                        <input type="text" class="form-control" name="status_anak" required="">
+                                                        <input type="text" class="form-control" name="status_anak" required=""
+                                                        value="<?= isset($_SESSION['form_data']['status_anak']) ? $_SESSION['form_data']['status_anak'] : ''; ?>">
                                                         <!-- Validation -->
                                                         <div class="valid-feedback"> Baguss! </div>
                                                         <div class="invalid-feedback"> Wajib Diisi! </div>
@@ -251,7 +261,8 @@ $title = "Pendaftaran Peserta Didik Baru"; // Judulnya
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Anak Ke</label>
-                                                        <input type="number" class="form-control" name="Anak_Ke" required="">
+                                                        <input type="number" class="form-control" name="Anak_Ke" required=""
+                                                        value="<?= isset($_SESSION['form_data']['Anak_Ke']) ? $_SESSION['form_data']['Anak_Ke'] : ''; ?>">
                                                         <!-- Validation -->
                                                         <div class="valid-feedback"> Baguss! </div>
                                                         <div class="invalid-feedback"> Wajib Diisi! </div>
@@ -259,7 +270,8 @@ $title = "Pendaftaran Peserta Didik Baru"; // Judulnya
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Jumlah Saudara</label>
-                                                        <input type="number" class="form-control" name="jumlah_saudara" required="">
+                                                        <input type="number" class="form-control" name="jumlah_saudara" required=""
+                                                        value="<?= isset($_SESSION['form_data']['jumlah_saudara']) ? $_SESSION['form_data']['jumlah_saudara'] : ''; ?>">
                                                         <!-- Validation -->
                                                         <div class="valid-feedback"> Baguss! </div>
                                                         <div class="invalid-feedback"> Wajib Diisi! </div>
@@ -267,7 +279,8 @@ $title = "Pendaftaran Peserta Didik Baru"; // Judulnya
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Jenis Tinggal</label>
-                                                        <input type="text" class="form-control" name="jenis_tinggal" required="">
+                                                        <input type="text" class="form-control" name="jenis_tinggal" required=""
+                                                        value="<?= isset($_SESSION['form_data']['jenis_tinggal']) ? $_SESSION['form_data']['jenis_tinggal'] : ''; ?>">
                                                         <!-- Validation -->
                                                         <div class="valid-feedback"> Baguss! </div>
                                                         <div class="invalid-feedback"> Wajib Diisi! </div>
@@ -275,7 +288,8 @@ $title = "Pendaftaran Peserta Didik Baru"; // Judulnya
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Alamat Tinggal</label>
-                                                        <textarea type="text" class="form-control" name="alamat_tinggal" required="" style="height:80px"></textarea>
+                                                        <textarea type="text" class="form-control" name="alamat_tinggal" required="" style="height:80px"
+                                                        value="<?= isset($_SESSION['form_data']['alamat_tinggal']) ? $_SESSION['form_data']['alamat_tinggal'] : ''; ?>"></textarea>
                                                         <!-- Validation -->
                                                         <div class="valid-feedback"> Baguss! </div>
                                                         <div class="invalid-feedback"> Wajib Diisi! </div>
@@ -283,7 +297,8 @@ $title = "Pendaftaran Peserta Didik Baru"; // Judulnya
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Provinsi Tinggal</label>
-                                                        <input type="text" class="form-control" name="provinsi_tinggal" required="">
+                                                        <input type="text" class="form-control" name="provinsi_tinggal" required=""
+                                                        value="<?= isset($_SESSION['form_data']['provinsi_tinggal']) ? $_SESSION['form_data']['provinsi_tinggal'] : ''; ?>">
                                                         <!-- Validation -->
                                                         <div class="valid-feedback"> Baguss! </div>
                                                         <div class="invalid-feedback"> Wajib Diisi! </div>
@@ -291,7 +306,8 @@ $title = "Pendaftaran Peserta Didik Baru"; // Judulnya
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Kabupaten / Kota Tinggal</label>
-                                                        <input type="text" class="form-control" name="kab_kota_tinggal" required="">
+                                                        <input type="text" class="form-control" name="kab_kota_tinggal" required=""
+                                                        value="<?= isset($_SESSION['form_data']['kab_kota_tinggal']) ? $_SESSION['form_data']['kab_kota_tinggal'] : ''; ?>">
                                                         <!-- Validation -->
                                                         <div class="valid-feedback"> Baguss! </div>
                                                         <div class="invalid-feedback"> Wajib Diisi! </div>
@@ -299,15 +315,17 @@ $title = "Pendaftaran Peserta Didik Baru"; // Judulnya
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Kecamatan Tinggal</label>
-                                                        <input type="text" class="form-control" name="kecamatan_tinggal" required="">
+                                                        <input type="text" class="form-control" name="kecamatan_tinggal" required=""
+                                                        value="<?= isset($_SESSION['form_data']['kecamatan_tinggal']) ? $_SESSION['form_data']['kecamatan_tinggal'] : ''; ?>">
                                                         <!-- Validation -->
                                                         <div class="valid-feedback"> Baguss! </div>
                                                         <div class="invalid-feedback"> Wajib Diisi! </div>
                                                         <!-- End Validation -->
                                                     </div>
                                                     <div class="form-group">
-                                                        <label>Kelurahan Tinggal</label>
-                                                        <input type="text" class="form-control" name="kelurahan_tinggal" required="">
+                                                        <label>Kelurahan/Desa Tinggal</label>
+                                                        <input type="text" class="form-control" name="kelurahan_tinggal" required=""
+                                                        value="<?= isset($_SESSION['form_data']['kelurahan_tinggal']) ? $_SESSION['form_data']['kelurahan_tinggal'] : ''; ?>">
                                                         <!-- Validation -->
                                                         <div class="valid-feedback"> Baguss! </div>
                                                         <div class="invalid-feedback"> Wajib Diisi! </div>
@@ -315,7 +333,8 @@ $title = "Pendaftaran Peserta Didik Baru"; // Judulnya
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Kode POS</label>
-                                                        <input type="number" class="form-control" name="kode_pos" required="">
+                                                        <input type="number" class="form-control" name="kode_pos" required=""
+                                                        value="<?= isset($_SESSION['form_data']['kode_pos']) ? $_SESSION['form_data']['kode_pos'] : ''; ?>">
                                                         <!-- Validation -->
                                                         <div class="valid-feedback"> Baguss! </div>
                                                         <div class="invalid-feedback"> Wajib Diisi! </div>
@@ -323,7 +342,8 @@ $title = "Pendaftaran Peserta Didik Baru"; // Judulnya
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Jarak Ke Sekolah (Meter)</label>
-                                                        <input type="number" class="form-control" name="jarak_ke_sekolah" required="">
+                                                        <input type="number" class="form-control" name="jarak_ke_sekolah" required=""
+                                                        value="<?= isset($_SESSION['form_data']['jarak_ke_sekolah']) ? $_SESSION['form_data']['jarak_ke_sekolah'] : ''; ?>">
                                                         <!-- Validation -->
                                                         <div class="valid-feedback"> Baguss! </div>
                                                         <div class="invalid-feedback"> Wajib Diisi! </div>
@@ -331,7 +351,8 @@ $title = "Pendaftaran Peserta Didik Baru"; // Judulnya
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Riwayat Penyakit</label>
-                                                        <textarea type="text" class="form-control" name="riwayat_penyakit" required="" style="height:80px"></textarea>
+                                                        <textarea type="text" class="form-control" name="riwayat_penyakit" required="" style="height:80px"
+                                                        value="<?= isset($_SESSION['form_data']['riwayat_penyakit']) ? $_SESSION['form_data']['riwayat_penyakit'] : ''; ?>"></textarea>
                                                         <!-- Validation -->
                                                         <div class="valid-feedback"> Baguss! </div>
                                                         <div class="invalid-feedback"> Wajib Diisi! </div>
@@ -376,7 +397,7 @@ $title = "Pendaftaran Peserta Didik Baru"; // Judulnya
 
                                                         <div class="form-group">
                                                             <label>NISN</label>
-                                                            <input type="text" class="form-control" name="nisn" required="" minlength="10" maxlength="10" value="<?= $row['NISN']; ?>">
+                                                            <input type="number" class="form-control" name="nisn" required="" minlength="10" maxlength="10" value="<?= $row['NISN']; ?>">
                                                             <!-- Validation -->
                                                             <div class="valid-feedback"> Baguss! </div>
                                                             <div class="invalid-feedback"> Wajib 10 kata</div>
@@ -384,7 +405,7 @@ $title = "Pendaftaran Peserta Didik Baru"; // Judulnya
                                                         </div>
                                                         <div class="form-group">
                                                             <label>No. KK</label>
-                                                            <input type="text" class="form-control" name="no_kk" required="" minlength="16" maxlength="16" value="<?= $row['No_KK']; ?>">
+                                                            <input type="number" class="form-control" name="no_kk" required="" minlength="16" maxlength="16" value="<?= $row['No_KK']; ?>">
                                                             <!-- Validation -->
                                                             <div class="valid-feedback"> Baguss! </div>
                                                             <div class="invalid-feedback"> Wajib 16 kata</div>
@@ -392,7 +413,7 @@ $title = "Pendaftaran Peserta Didik Baru"; // Judulnya
                                                         </div>
                                                         <div class="form-group">
                                                             <label>NIK</label>
-                                                            <input type="text" class="form-control" name="nik" required="" minlength="16" maxlength="16" value="<?= $row['NIK']; ?>">
+                                                            <input type="number" class="form-control" name="nik" required="" minlength="16" maxlength="16" value="<?= $row['NIK']; ?>">
                                                             <!-- Validation -->
                                                             <div class="valid-feedback"> Baguss! </div>
                                                             <div class="invalid-feedback"> Wajib 16 kata </div>
