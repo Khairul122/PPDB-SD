@@ -26,7 +26,7 @@ require("../template/header.php"); // include headernya
                 <div class="card">
                     <div class="section-body">
                         <div class="row mb-3 col-12 pt-2">
-                            <div class="col-md-4 ">
+                            <div class="col-md-4">
                                 <label for="tanggal_awal">Tanggal Awal:</label>
                                 <input type="date" class="form-control" id="tanggal_awal" name="tanggal_awal">
                             </div>
@@ -36,22 +36,46 @@ require("../template/header.php"); // include headernya
                             </div>
                             <div class="col-md-4">
                                 <button class="btn btn-primary mt-4" onclick="filterData()">Filter</button>
-
                                 <button class="btn btn-danger mt-4" onclick="resetFilter()">Reset Filter</button>
                             </div>
                         </div>
 
-
-                        <div class="card-header">
-                            <!-- <h4>Basic DataTables</h4> -->
+                        <div class="card-header d-flex justify-content-between align-items-center">
                             <a href="tambahData.php" type="button" class="btn btn-primary daterange-btn icon-left btn-icon">
                                 <i class="fas fa-plus"></i> Tambah Data Administrasi
                             </a>
-                            <a href="cetakData.php" class="btn btn-success" target="_blank">Cek PDF</a>
                         </div>
-                        <div class="card-body">
 
-                            <!-- tabelnya -->
+                        <!-- Form Kepala Sekolah & NIP -->
+                        <div class="row mb-4">
+                            <div class="col-md-12">
+                                <div class="card p-3">
+                                    <form action="cetakData.php" method="GET" target="_blank">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="kepala_sekolah">Nama Kepala Sekolah:</label>
+                                                    <input type="text" class="form-control" name="kepala_sekolah" id="kepala_sekolah" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="nip">NIP Kepala Sekolah:</label>
+                                                    <input type="text" class="form-control" name="nip" id="nip" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-left mt-3">
+                                            <button type="submit" class="btn btn-success">
+                                                <i class="fas fa-print"></i> Cetak PDF
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped" id="table-1">
                                     <thead>
@@ -70,8 +94,8 @@ require("../template/header.php"); // include headernya
 
                                         $no = 1;
                                         $data = mysqli_query($conn, "SELECT a.*, b.NISN, b.Nama_Peserta_Didik FROM administrasi a
-                                                      LEFT JOIN identitas_siswa b
-                                                      ON a.id_identitas_siswa = b.Id_Identitas_Siswa") or die(mysqli_error($conn));
+                                              LEFT JOIN identitas_siswa b
+                                              ON a.id_identitas_siswa = b.Id_Identitas_Siswa") or die(mysqli_error($conn));
                                         foreach ($data as $row) {
                                         ?>
                                             <tr>
@@ -81,7 +105,6 @@ require("../template/header.php"); // include headernya
                                                 <td><?= $row['status']; ?></td>
                                                 <td><?= $row['tgl_ubah']; ?></td>
                                                 <td class="text-center" width="120px">
-                                                    <!-- <a href="#" class="btn btn-success my-2" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-eye"></i></a> -->
                                                     <a href="ubahData.php?id=<?= $row['id_administrasi']; ?>" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
                                                     <a href="../../controller/admin/administrasi.php?hapusData=<?= $row['id_administrasi']; ?>" class="btn btn-danger my-2" onclick="return confirm('Anda Yakin');"><i class="fas fa-trash"></i></a>
                                                 </td>
@@ -89,7 +112,6 @@ require("../template/header.php"); // include headernya
                                         <?php } ?>
                                     </tbody>
                                 </table>
-                                <!-- penutup tabelnya -->
 
                             </div>
                         </div>
@@ -97,6 +119,7 @@ require("../template/header.php"); // include headernya
                 </div>
             </div>
         </div>
+
 </section>
 
 <script type="text/javascript">

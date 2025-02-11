@@ -3,8 +3,11 @@
 require_once('../../tcpdf/tcpdf.php');
 include('../../config/connection.php');
 
+// Ambil Nama Kepala Sekolah & NIP dari Form POST
+$kepala_sekolah = isset($_POST['kepala_sekolah']) ? $_POST['kepala_sekolah'] : "NAMA KEPALA SEKOLAH";
+$nip = isset($_POST['nip']) ? $_POST['nip'] : "19XXXXXXXXX";
+
 // Create new TCPDF instance with A4 portrait orientation
-// This ensures our document maintains a consistent professional format
 $pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
 
 // Configure basic document settings
@@ -26,7 +29,6 @@ $pdf->SetAutoPageBreak(TRUE, 25);
 $pdf->AddPage();
 
 // Create the official letterhead section
-// This includes the school's official header text with proper formatting
 $letterhead = '
 <table style="width: 100%;">
     <tr>
@@ -62,7 +64,6 @@ $title = '
 $pdf->writeHTML($title, true, false, true, false, '');
 
 // Create the table structure for our data
-// Note the careful width allocation to ensure all data fits properly
 $html = '
 <table border="1" cellpadding="5" style="border-collapse: collapse; width: 100%;">
     <thead>
@@ -73,7 +74,6 @@ $html = '
             <td>Nama Ayah</td>
             <td>Nama Ibu</td>
             <td>Nama Wali</td>
-            <td>Tanggal Update</td>
         </tr>
     </thead>
     <tbody>';
@@ -87,9 +87,6 @@ $no = 1;
 
 // Loop through each row of data and add it to our table
 while ($row = mysqli_fetch_array($data)) {
-    // Format the date to maintain consistency
-    $tanggal_update = date('Y-m-d H:i:s', strtotime($row['tgl_ubah']));
-    
     $html .= "
         <tr>
             <td style='text-align: center;'>{$no}</td>
@@ -98,7 +95,6 @@ while ($row = mysqli_fetch_array($data)) {
             <td>{$row['Nama_Ayah']}</td>
             <td>{$row['Nama_Ibu']}</td>
             <td>{$row['Nama_Wali']}</td>
-            <td>{$tanggal_update}</td>
         </tr>";
     $no++;
 }
@@ -110,6 +106,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 // Add the signature section at the bottom of the document
 $currentDate = date('d F Y');
+
 $signature = "
 <table style='width: 100%; margin-top: 30px;'>
     <tr>
@@ -117,8 +114,8 @@ $signature = "
         <td style='width: 40%; text-align: center;'>
             Gn. Padang Alai, {$currentDate}<br>
             Kepala SDN 14 V KOTO TIMUR<br><br><br><br><br>
-            <u>NAMA KEPALA SEKOLAH</u><br>
-            NIP. 19XXXXXXXXX
+            <u>{$kepala_sekolah}</u><br>
+            NIP. {$nip}
         </td>
     </tr>
 </table>";
@@ -127,6 +124,5 @@ $signature = "
 $pdf->writeHTML($signature, true, false, true, false, '');
 
 // Output the PDF file
-// 'I' parameter means the file will be sent to browser inline (opened in browser)
 $pdf->Output('laporan-data-orang-tua.pdf', 'I');
 ?>
